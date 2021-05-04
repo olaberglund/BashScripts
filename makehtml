@@ -1,0 +1,26 @@
+#!/bin/bash
+
+ls -t "$@" | tail -n +1  > sorteradlista
+destination=/home/ola/website/olaberglund/brev/allabrevhtml
+(( x = 1 ))
+(( y = $(ls *docx | wc -l) ))
+while IFS= read -r line
+do
+  n=$(printf %08d $x)
+  pandoc --quiet -s -f docx -t html "$line" -o "$n${line:0:-5}.html"
+  echo -ne "$x/$y \r"
+  ((x ++ ))
+done < sorteradlista
+
+rm $destination/*
+mv -f *.html "$destination"
+
+> $destination/lista
+for f in $destination/*.html
+do
+  filename=$(basename "$f")
+  echo "<p><a href=\"allabrevhtml/$filename\"><em>${filename:8:-5}</em><p>" >> $destination/lista
+done
+
+sed -i '/allabrevhtml/d' /home/ola/website/olaberglund/brev/index.html
+sed -i '/letters go here/r /home/ola/website/olaberglund/brev/allabrevhtml/lista' /home/ola/website/olaberglund/brev/index.html

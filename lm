@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+echo "RUBRIK
+
+Ingress – Max 150 tecken
+
+De amerikanska börserna  
+
+USA-Råvaror
+
+USA-AKTIER  
+
+Den tioåriga amerikanska statsobligationsräntan handlades XXX vid XXX procent. 
+ASIEN
+
+Sverige
+
+Makroekonomi " > $1
