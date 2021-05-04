@@ -1,2 +1,2 @@
-#!/bin/zsh
+#!/bin/sh
 perl -ne 'print eval $_,"\n"' $1 > $2
