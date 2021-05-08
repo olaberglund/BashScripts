@@ -1,12 +1,12 @@
 #!/bin/sh
 d="$(date +"%G-%m-%d %R")"
-sed -i "/Senast/!b;n;c$d" /home/ola/website/olaberglund/index.html
+sed -i "/Senast/!b;n;c$d" /home/$USER/olaberglundxyz/olaberglund/index.html
 
 if [ "$1" == "v" ]
 then
-  rsync -vrP --delete-after ~/website/olaberglund/ root@olaberglund.xyz:/var/www/olaberglund
+  rsync -vrP --delete-after ~/olaberglundxyz/olaberglund/ root@olaberglund.xyz:/var/www/olaberglund
 else
-  rsync -vrP --delete-after ~/website/olaberglund/ root@olaberglund.xyz:/var/www/olaberglund > /dev/null
+  rsync -vrP --delete-after ~/olaberglundxyz/olaberglund/ root@olaberglund.xyz:/var/www/olaberglund > /dev/null
 fi
 
 
