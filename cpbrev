@@ -7,14 +7,26 @@ sed -n '1p' $FILE | sc
 read -p "copy preamble? [ENTER]"
 sed -n '3p' $FILE | sc
 
-if [ "$OPTION" == "b" ]
+if [ ${OPTION} ]; 
 then
+
   read -p "copy foreign? [ENTER]"
   sed -n '5,15p' $FILE | sc
-  read -p "copy Sweden? [ENTER]"
-  sed -n '17p' $FILE | sc
-  read -p "copy macro? [ENTER]"
-  sed -n '19p' $FILE | sc
+
+  case "$OPTION" in
+    b)
+      read -p "copy Sweden? [ENTER]"
+      sed -n '17p' $FILE | sc
+      read -p "copy macro? [ENTER]"
+      sed -n '19p' $FILE | sc
+      ;;
+    s)
+      read -p "copy Sweden+? [ENTER]"
+      sed -n '17, 19p' $FILE | sc
+      read -p "copy macro? [ENTER]"
+      sed -n '21p' $FILE | sc
+      ;;
+  esac
 else
   read -p "copy rest? [ENTER]"
   sed -n '5, $p' $FILE | sc
