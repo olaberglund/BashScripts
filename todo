@@ -1,0 +1,4 @@
+#!/bin/sh
+#cat '/home/ola/Documents/TODO'
+x=$(read -p "append?")
+echo $x

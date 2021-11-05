@@ -1,0 +1,5 @@
+#!/bin/sh
+RUBRIC=$(head -n 1 $1)
+cp $1 "$RUBRIC"
+gdrive import --parent 13US033rzQ_vnqyhb-45Jg-hrnLLji86K --mime text/plain "$RUBRIC"
+rm "$RUBRIC"

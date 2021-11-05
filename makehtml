@@ -23,4 +23,4 @@ do
 done
 
 sed -i '/allabrevhtml/d' /home/$USER/olaberglundxyz/olaberglund/brev/index.html
-sed -i "/letters go here/r /home/$USER/olaberglundxyz/olaberglund/brev/allabrevhtml/lista' /home/$USER/olaberglundxyz/olaberglund/brev/index.html
+sed -i "/letters go here/r /home/$USER/olaberglundxyz/olaberglund/brev/allabrevhtml/lista' /home/$USER/olaberglundxyz/olaberglund/brev/index.html"
