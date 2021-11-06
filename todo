@@ -1,4 +1,6 @@
 #!/bin/sh
-#cat '/home/ola/Documents/TODO'
-x=$(read -p "append?")
+cat '/home/ola/Documents/TODO'
+read -repn1 $'\nappend (1)\nquit (2)' x 
 echo $x
+
+
