@@ -1,5 +1,26 @@
 #!/bin/sh
-charge_full_design=$(cat /sys/class/power_supply/BAT0/charge_full_design 2>/dev/null || cat /sys/class/power_supply/BAT0/energy_full_design)
-charge_now=$(cat /sys/class/power_supply/BAT0/charge_now 2>/dev/null || cat /sys/class/power_supply/BAT0/energy_now 2>/dev/null) 
+battery="/sys/class/power_supply/BAT0"
+capacity=$(cat "$battery/capacity")
+
+case "$(cat "$battery/status")" in
+		"Full") status="" ;;
+		"Discharging") status="-" ;;
+		"Charging") status="+" ;;
+		"Not charging") status="x" ;;
+		"Unknown") status="?" ;;
+esac
+
+if [ "$capacity" -gt "90" ]; then
+	icon=" "
+elif [ "$capacity" -le "90" ] && [ "$capacity" -gt "75" ]; then
+	icon=" "
+elif [ "$capacity" -le "75" ] && [ "$capacity" -gt "10" ]; then
+	icon=" "
+else
+	icon=" "
+fi
+
+charge_full_design=$(cat $battery/charge_full_design 2>/dev/null || cat $battery/energy_full_design)
+charge_now=$(cat $battery/charge_now 2>/dev/null || cat $battery/energy_now 2>/dev/null) 
 percentage=$(echo "100*$charge_now/$charge_full_design" | bc)
-echo $percentage%
+echo $icon$status$percentage%
