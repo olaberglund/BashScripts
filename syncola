@@ -2,7 +2,7 @@
 d="$(date +"%G-%m-%d %R")"
 sed -i "/Senast/!b;n;c$d" /home/$USER/olaberglundxyz/olaberglund/index.html
 
-if [ "$1" == "v" ]
+if [ "$1" == "-v" ]
 then
   rsync -vrP --delete-after ~/olaberglundxyz/olaberglund/ root@olaberglund.xyz:/var/www/olaberglund
 else
