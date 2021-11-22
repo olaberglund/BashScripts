@@ -7,7 +7,7 @@ case "$(cat "$battery/status")" in
 		"Discharging") status="-" ;;
 		"Charging") status="+" ;;
 		"Not charging") status="x" ;;
-		"Unknown") status="?" ;;
+		"Unknown") status="" ;;
 esac
 
 if [ "$capacity" -gt "90" ]; then
@@ -23,4 +23,4 @@ fi
 charge_full_design=$(cat $battery/charge_full_design 2>/dev/null || cat $battery/energy_full_design)
 charge_now=$(cat $battery/charge_now 2>/dev/null || cat $battery/energy_now 2>/dev/null) 
 percentage=$(echo "100*$charge_now/$charge_full_design" | bc)
-echo $icon$status$percentage%
+echo $icon$percentage%$status
