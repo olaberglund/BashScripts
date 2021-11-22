@@ -1,0 +1,9 @@
+#!/bin/sh
+(( x = 1 ))
+(( y = $(wc -l < $1) ))
+while read line; do 
+	read -p "$x/$y: $line" < /dev/tty
+	echo "$line" | sed 's/ s\..*//' | sc
+	((x ++ ))
+done < $1
+
