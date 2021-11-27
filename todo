@@ -1,2 +1,2 @@
 #!/bin/sh
-cat '/home/ola/Documents/TODO'
+cat '/home/ola/Documents/TODO.md'
