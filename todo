@@ -4,13 +4,22 @@ OPTION=$1
 if [ ${OPTION} ];
 then
 	case "$OPTION" in
-		x)
+		-x)
 			sed -i '0,/\[ /s/\[ /\[X/' $FILE
 			;;
-		a)
-			echo "- [ ] "$2"" >> $FILE	
+		-a)
+			if [ -z "$2" ];
+			then 
+				echo "Add a task!"
+				exit
+			else
+				for i in "${@:2}";
+				do
+					echo "- [ ] ""$i" >> $FILE	
+				done
+			fi
 			;;
-		d)
+		-d)
 			nl $FILE
 			read -p "Delete which task? (1-$(wc -l < $FILE), all: 0, all done: a ): " n
 			if [ $n == 'a' ];
