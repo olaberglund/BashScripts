@@ -1,3 +1,2 @@
 #!/bin/sh
-export XDG_RUNTIME_DIR="/run/user/1000"
-mpv /home/ola/Music/Fart.m4a > /dev/null 2>&1
+mpv /home/ola/Music/Fart.m4a > /dev/null 
