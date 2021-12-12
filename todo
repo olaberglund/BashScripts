@@ -4,9 +4,6 @@ OPTION=$1
 if [ ${OPTION} ];
 then
 	case "$OPTION" in
-		-x)
-			sed -i '0,/\[ /s/\[ /\[X/' $FILE
-			;;
 		-a)
 			if [ -z "$2" ];
 			then 
