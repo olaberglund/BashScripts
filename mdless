@@ -1,10 +1,4 @@
 #!/bin/sh
 
-if [ $2 ];
-then
-	pandoc $1 -t pdf | zathura -
-else
-	pandoc $1 | lynx -stdin
-fi
-
+pandoc $1 -t pdf | zathura -
 

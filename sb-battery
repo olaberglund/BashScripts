@@ -10,14 +10,15 @@ case "$(cat "$battery/status")" in
 		"Unknown") status="" ;;
 esac
 
+                        , "<fc=#c41449><fn=4>\xf2db</fn></fc> <total> <fn=5>\x25</fn> "
 if [ "$capacity" -gt "90" ]; then
-	icon=" "
+	icon="<fc=#c41449><fn=4>  </fn></fc>"
 elif [ "$capacity" -le "90" ] && [ "$capacity" -gt "75" ]; then
-	icon=" "
+	icon="<fc=#c41449><fn=4>  </fn></fc>"
 elif [ "$capacity" -le "75" ] && [ "$capacity" -gt "10" ]; then
-	icon=" "
+	icon="<fc=#c41449><fn=4>  </fn></fc>"
 else
-	icon=" "
+	icon="<fc=#c41449><fn=4>  </fn></fc>"
 fi
 
 charge_full_design=$(cat $battery/charge_full_design 2>/dev/null || cat $battery/energy_full_design)
